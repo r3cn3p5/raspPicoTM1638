@@ -12,8 +12,8 @@ if __name__ == '__main__':
                     machine.Pin(7, machine.Pin.OUT),
                     machine.Pin(8, machine.Pin.OUT), 1)
 
-    board1.write_string("Mancala")
-    board2.write_string("Game 2.0")
+    board1.write_string("Test")
+    board2.write_string("Test")
 
     seg_spin = [TM1638.SEG_TOP,
                 TM1638.SEG_TOP_RIGHT,
