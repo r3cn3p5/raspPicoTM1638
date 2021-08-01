@@ -42,10 +42,10 @@ if __name__ == '__main__':
 
     player_board = [TM1638(machine.Pin(5, machine.Pin.OUT),
                            machine.Pin(7, machine.Pin.OUT),
-                           machine.Pin(8, machine.Pin.OUT), 1),
+                           machine.Pin(8, machine.Pin.OUT), 2),
                     TM1638(machine.Pin(6, machine.Pin.OUT),
                            machine.Pin(7, machine.Pin.OUT),
-                           machine.Pin(8, machine.Pin.OUT), 1)]
+                           machine.Pin(8, machine.Pin.OUT), 2)]
 
     player_board[0].write_string("Mancala")
     player_board[1].write_string("Game 1.1")
@@ -62,8 +62,13 @@ if __name__ == '__main__':
 
         # Your turn
         player_board[current_player].write_string("YourTurn")
-        player_board[current_player].toggle_led(7, True)
-        player_board[other_player].toggle_led(7, False)
+        for i in range(6):
+            if game.get_side(current_player).pockets[i] > 0:
+                player_board[current_player].toggle_led(i, True)
+            else:
+                player_board[current_player].toggle_led(i, False)
+            player_board[other_player].toggle_led(i, False)
+
         time.sleep_ms(2000)
         display_player(current_player)
 

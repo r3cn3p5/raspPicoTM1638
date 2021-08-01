@@ -33,6 +33,8 @@ class TM1638:
         self.stb.value(False)
         self._send_byte(0x40 | TM1638.WRITE_MODE | TM1638.INCR_ADDR)
         self._send_byte(0xC0)  # address command set to the 1st address
+
+        # Reset
         for _ in range(16):
             self._send_byte(0x00)  # set to zero all the addresses
         self.stb.value(True)
