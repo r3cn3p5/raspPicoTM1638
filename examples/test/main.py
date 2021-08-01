@@ -27,5 +27,3 @@ if __name__ == '__main__':
             board1.write_segments(7, s)
             board2.write_segments(7, s)
             time.sleep_ms(200)
-
-
